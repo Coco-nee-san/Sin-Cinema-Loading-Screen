@@ -161,7 +161,7 @@ function cats_and_dogs(c) {
 			This webpage appears during the idle theater state
 			while there are no videos queued to play. 
 		-->
-
+		
 		<div id="content" class="welcome-page">
 
 			<!-- Centered Background Logo -->
@@ -180,7 +180,29 @@ function cats_and_dogs(c) {
 				<div class="info">If the videos aren't working do /fixvideos for a tutorial!</div>
 
 			</div>
-
+			
+			<a id="music-button" style="cursor:pointer;">
+			<img src="images/playbutton.png" width="50" height="50" ></a>
+			<audio id="playMusic" autoplay loop>
+			<source src="https://dl.dropbox.com/scl/fi/gbrbk0ca03vbucyhy99ce/sincinema_ad.mp3?rlkey=8zsa6ppyw032o8b7leolb61wy&st=f3gappd1&dl=0">
+			</audio>
+			<input type="range" id="volume-slider" max="10" min="0" step="0.01">
+			
+			<script type="text/javascript">
+			$('#music-button').toggle(
+			function () {
+			document.getElementById('playMusic').play();
+			},
+			function () {
+			document.getElementById('playMusic').pause();
+			}
+			);
+			document.getElementById('playMusic').volume = 0.07
+			let volume = document.getElementById('volume-slider');
+			volume.addEventListener("change", function(e) {
+				document.getElementById('playMusic').volume = e.currentTarget.value / 100;
+			})
+			</script>
 			<!-- Footer -->
 			<div class="footer-container"></div>
 
